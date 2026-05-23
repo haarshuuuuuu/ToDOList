@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated To-Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <!-- Floating orbs background -->
+    <div class="bg-orbs" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Particle canvas -->
+    <canvas id="particles" aria-hidden="true"></canvas>
+
+    <div class="app-shell">
+
+        <!-- HEADER -->
+        <header class="app-header">
+            <div class="header-badge">✦ Task Manager</div>
+            <h1 class="app-title">GET IT<br /><span class="title-accent">DONE.</span></h1>
+            <p class="app-sub">Stay focused. Ship faster.</p>
+        </header>
+
+        <!-- STATS -->
+        <section class="stats-row" aria-label="Task statistics">
+            <div class="stat-card" id="card-total">
+                <div class="stat-icon">📋</div>
+                <div class="stat-num" id="stat-total">0</div>
+                <div class="stat-label">Total</div>
+                <div class="stat-glow"></div>
+            </div>
+            <div class="stat-card" id="card-done">
+                <div class="stat-icon">✅</div>
+                <div class="stat-num" id="stat-done">0</div>
+                <div class="stat-label">Done</div>
+                <div class="stat-glow"></div>
+            </div>
+            <div class="stat-card" id="card-left">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-num" id="stat-left">0</div>
+                <div class="stat-label">Left</div>
+                <div class="stat-glow"></div>
+            </div>
+        </section>
+
+        <!-- PROGRESS -->
+        <div class="progress-section">
+            <div class="progress-header">
+                <span class="progress-title">Progress</span>
+                <span class="progress-pct" id="progress-pct">0%</span>
+            </div>
+            <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-fill" id="progress-fill"></div>
+                <div class="progress-glow" id="progress-glow"></div>
+            </div>
+        </div>
+
+        <!-- INPUT -->
+        <div class="input-zone">
+            <div class="input-wrapper">
+                <span class="input-icon">+</span>
+                <input type="text" id="task-input" placeholder="What needs to be done?" autocomplete="off"
+                    maxlength="120" aria-label="New task input" />
+                <button class="btn-add" id="add-btn" aria-label="Add task">
+                    <span class="btn-text">ADD</span>
+                    <span class="btn-ripple"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="filter-bar" role="tablist" aria-label="Filter tasks">
+            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="filter-btn" data-filter="active" role="tab" aria-selected="false">Active</button>
+            <button class="filter-btn" data-filter="done" role="tab" aria-selected="false">Completed</button>
+            <button class="btn-clear" id="clear-btn" title="Clear completed tasks">Clear Done</button>
+        </div>
+
+        <!-- TASK LIST -->
+        <ul class="task-list" id="task-list" aria-live="polite" aria-label="Task list"></ul>
+
+        <!-- FOOTER -->
+        <footer class="app-footer">
+            <span id="footer-msg">Keep going! 💪</span>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
